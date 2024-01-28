@@ -5,5 +5,4 @@ if [ -f boot.img.lz4 ];then # For Samsung Devices
 fi
 
 ./magiskboot unpack boot.img
-
-perl split_bootimg.pl boot.img
+./magiskboot cpio ramdisk.cpio extract

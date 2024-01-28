@@ -6,11 +6,11 @@ on:
       BOOT_URL:
         description: 'URL of the Boot Image'
         required: true
-        default: 'https://github.com/YOUR_USERNAME/REPOSITORY/releases/...'
+        default: 'https://github.com/bm0x/motorola_releases/releases/download/moto_lyriq/boot.img'
       DEVICE_NAME:
         description: 'Name of the Device'
         required: true
-        default: 'Z Fold 3 5G'
+        default: 'Moto Edge 40 (lyriq) - Testing'
 
 permissions:
   contents: write
