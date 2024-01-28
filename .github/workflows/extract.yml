@@ -29,7 +29,7 @@ jobs:
 
     - name: Prepare the environment
       run: |
-        sudo apt install git wget lz4 tar openssl python3 device-tree-compiler -y
+        sudo apt install git wget lz4 tar openssl python3 perl device-tree-compiler -y
 
     - name: Fetch image from URL
       run: |
