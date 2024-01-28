@@ -38,21 +38,11 @@ jobs:
         wget ${{ github.event.inputs.BOOT_URL }}
         wget https://github.com/bm0x/Samsung-Public-Releases/releases/download/vbmeta_gsi/vbmeta-gsi.tar
 
-    - name: Montage of the Kernel Image
+    - name: Montage and Extract of the Kernel Image
       run: |
         chmod a+x extractor.sh
         chmod a+x magiskboot
         ./extractor.sh || true
-
-    - name: Extract the Kernel Image
-      run: |
-        chmod a+x script.sh
-        ./script.sh || true
-        python3 avbtool extract_public_key --key phh.pem --output phh.pub.bin
-        python3 avbtool add_hash_footer --partition_name boot --partition_size $(wc -c boot.img |cut -f 1 -d ' ') --image boot-patched.img --key phh.pem --algorithm SHA256_RSA4096
-        tar -xf vbmeta-gsi.tar
-        mkdir output && cd output
-        mv ../* ./
         
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
