@@ -1,9 +1,9 @@
-name: RECOVERY
+name: Kernel Extractor
 
 on:
   workflow_dispatch:
     inputs:
-      RECOVERY_URL:
+      BOOT_URL:
         description: 'URL of the Boot Image'
         required: true
         default: 'https://github.com/YOUR_USERNAME/REPOSITORY/releases/...'
@@ -35,7 +35,7 @@ jobs:
       run: |
         ls
         pwd
-        wget ${{ github.event.inputs.RECOVERY_URL }}
+        wget ${{ github.event.inputs.BOOT_URL }}
         wget https://github.com/bm0x/Samsung-Public-Releases/releases/download/vbmeta_gsi/vbmeta-gsi.tar
 
     - name: Montage of the Kernel Image
@@ -61,6 +61,6 @@ jobs:
           /home/runner/work/kernel-extractor-gh-actions/kernel-extractor-gh-actions/output/*
         name: Extracted Kernel for ${{ github.event.inputs.DEVICE_NAME }}
         tag_name: ${{ github.run_id }}
-        body: Kernel extracted from ${{ github.event.inputs.RECOVERY_URL }} for ${{ github.event.inputs.DEVICE_NAME }} by ${{ github.actor }} at ${{ github.run_number }}. Added Magisk and AVB 2.0 support and VBMeta for GSI flashing for Treble devices.
+        body: Kernel extracted from ${{ github.event.inputs.BOOT_URL }} for ${{ github.event.inputs.DEVICE_NAME }} by ${{ github.actor }} at ${{ github.run_number }}. Added Magisk and AVB 2.0 support and VBMeta for GSI flashing for Treble devices.
       env:
         GITHUB_TOKEN: ${{ github.token }}
