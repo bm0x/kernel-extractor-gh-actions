@@ -43,14 +43,17 @@ jobs:
         chmod a+x extractor.sh
         chmod a+x magiskboot
         ./extractor.sh || true
+        tar -xf vbmeta-gsi.tar
         
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          /home/runner/work/kernel-extractor-gh-actions/kernel-extractor-gh-actions/output/*
+          /home/runner/work/kernel-extractor-gh-actions/kernel-extractor-gh-actions/*
         name: Extracted Kernel for ${{ github.event.inputs.DEVICE_NAME }}
         tag_name: ${{ github.run_id }}
-        body: Kernel extracted from ${{ github.event.inputs.BOOT_URL }} for ${{ github.event.inputs.DEVICE_NAME }} by ${{ github.actor }} at ${{ github.run_number }}. Added Magisk and AVB 2.0 support and VBMeta for GSI flashing for Treble devices.
+        body: Kernel extracted from ${{ github.event.inputs.BOOT_URL }} for ${{ github.event.inputs.DEVICE_NAME }} 
+          by ${{ github.actor }}. 
+          Added Magisk and AVB 2.0 support and VBMeta for GSI flashing for Treble devices.
       env:
         GITHUB_TOKEN: ${{ github.token }}
