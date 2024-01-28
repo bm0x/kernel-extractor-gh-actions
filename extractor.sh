@@ -6,4 +6,4 @@ fi
 
 ./magiskboot unpack boot.img
 
-split_bootimg.pl boot.img
+./split_bootimg.pl boot.img
