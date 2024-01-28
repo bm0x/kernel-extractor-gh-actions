@@ -29,7 +29,7 @@ jobs:
 
     - name: Prepare the environment
       run: |
-        sudo apt install git wget lz4 tar openssl python3 perl device-tree-compiler -y
+        sudo apt install git wget zip lz4 tar openssl python3 perl device-tree-compiler -y
 
     - name: Fetch image from URL
       run: |
@@ -46,7 +46,7 @@ jobs:
         chmod a+x split_bootimg.pl
         ./extractor.sh || true
         tar -xf vbmeta-gsi.tar
-        tar cvf kernel-extracted.tar ./*
+        zip kernel-extracted.zip *
         
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
