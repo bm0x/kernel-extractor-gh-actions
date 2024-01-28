@@ -46,12 +46,13 @@ jobs:
         chmod a+x split_bootimg.pl
         ./extractor.sh || true
         tar -xf vbmeta-gsi.tar
+        tar cvf kernel-extracted.tar ./*
         
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          /home/runner/work/kernel-extractor-gh-actions/kernel-extractor-gh-actions/*
+          /home/runner/work/kernel-extractor-gh-actions/kernel-extractor-gh-actions/kernel-extracted.tar
 
         name: Extracted Kernel for ${{ github.event.inputs.DEVICE_NAME }}
         tag_name: ${{ github.run_id }}
