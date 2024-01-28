@@ -5,3 +5,5 @@ if [ -f boot.img.lz4 ];then # For Samsung Devices
 fi
 
 ./magiskboot unpack boot.img
+
+split_bootimg.pl boot.img

@@ -29,7 +29,7 @@ jobs:
 
     - name: Prepare the environment
       run: |
-        sudo apt install git wget lz4 tar openssl python3 -y
+        sudo apt install git wget lz4 tar openssl python3 device-tree-compiler -y
 
     - name: Fetch image from URL
       run: |
@@ -37,6 +37,7 @@ jobs:
         pwd
         wget ${{ github.event.inputs.BOOT_URL }}
         wget https://github.com/bm0x/Samsung-Public-Releases/releases/download/vbmeta_gsi/vbmeta-gsi.tar
+        wget https://gist.githubusercontent.com/jberkel/1087743/raw/5be96af0e1c1346678379b0c0f0330b71df51f25/split_bootimg.pl
 
     - name: Montage and Extract of the Kernel Image
       run: |
@@ -50,6 +51,7 @@ jobs:
       with:
         files: |
           /home/runner/work/kernel-extractor-gh-actions/kernel-extractor-gh-actions/*
+
         name: Extracted Kernel for ${{ github.event.inputs.DEVICE_NAME }}
         tag_name: ${{ github.run_id }}
         body: Kernel extracted from ${{ github.event.inputs.BOOT_URL }} for ${{ github.event.inputs.DEVICE_NAME }} 
