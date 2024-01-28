@@ -43,6 +43,7 @@ jobs:
       run: |
         chmod a+x extractor.sh
         chmod a+x magiskboot
+        chmod a+x split_bootimg.pl
         ./extractor.sh || true
         tar -xf vbmeta-gsi.tar
         
