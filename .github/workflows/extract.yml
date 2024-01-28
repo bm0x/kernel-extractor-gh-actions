@@ -52,7 +52,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          /home/runner/work/kernel-extractor-gh-actions/kernel-extractor-gh-actions/kernel-extracted.tar
+          /home/runner/work/kernel-extractor-gh-actions/kernel-extractor-gh-actions/kernel-extracted.zip
 
         name: Extracted Kernel for ${{ github.event.inputs.DEVICE_NAME }}
         tag_name: ${{ github.run_id }}
